@@ -1,0 +1,159 @@
+<link href="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.css" rel="stylesheet">
+<script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio | Nathan Wignall</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<script>
+  function toggleFilter(element) {
+    let i = element.querySelector('i');
+
+    let enable;
+    if (i) {
+      if (i.textContent === 'done') {
+        i.textContent = 'close';
+        enable = false;
+      }
+      else {
+        i.textContent = 'done';
+        enable = true;
+      }
+    }
+
+    let articles = document.getElementById('articles').children;
+    for (let article of articles) {
+      if (article.className.includes(element.id)) {
+        if (enable) {
+          article.style.display = '';
+        }
+        else {
+          article.style.display = 'none';
+        }
+      }
+    }
+  }
+</script>
+
+<body class="dark">
+  <main class="responsive">
+    <article class="center-align">
+      <h5>Hey There!</h5>
+      <p>
+        I'm Nathan Wignall, a first-year computer engineering student at The University of Texas at Dallas. You can
+        find me on <a href="https://github.com/nathan-jw" class="link" target="_blank">GitHub</a> or
+        <a href="https://www.linkedin.com/in/nathan-wignall-843840286/" class="link" target="_blank">LinkedIn</a>.
+      </p>
+    </article>
+    <hr class="large">
+    <div class="tabs">
+      <a data-ui="#about-tab">About</a>
+      <a data-ui="#projects-tab" class="active">Projects</a>
+      <a data-ui="#clubs-tab">Clubs</a>
+    </div>
+    <div class="page padding" id="about-tab">
+      <article>
+        <h5>Why Computer Engineering?</h5>
+        <p>
+          I've been intrigued by electronics and machines for as long as I remember. As a kid, I used to take any old
+          electronics—cheap motorized toys, broken phones, old hard drives, or whatever else eight-year-old me could
+          get my hands on—and break them open in the backyard. I would stare at the circuits inside, wondering, "how?"
+          Nowadays, designing PCB circuits myself, I feel the same sense of wonder. Even the simplest technology is
+          incredibly complex under the hood, and the closer you look, the more there is to discover. I'm constantly
+          surprised by just how much there is to learn and how little I actually know.
+        </p>
+      </article>
+      <article>
+        <h5>Other Hobbies</h5>
+        <p>
+          I have many hobbies outside of engineering and other nerd stuff. I'm a huge fan of music (124,000 minutes on
+          my last Spotify wrapped), enjoy cooking for myself and my family, and love to read. In addition to these, my
+          favorite hobbies more artistic: writing and photography. I enjoy having creative outlets both through my
+          technical and artistic interest, and love blending the two. I have a particular interest in creative image
+          processing and enjoy putting my programming skills to use making interesting and novel filters and effects to
+          apply to the photos I take.
+        </p>
+      </article>
+    </div>
+    <div class="page padding active" id="projects-tab">
+      <div id="filter">
+        <button class="chip round" id="programming" onclick="toggleFilter(this)">
+          <i>done</i>
+          <span>Programming</span>
+        </button>
+        <button class="chip round" id="electrical" onclick="toggleFilter(this)">
+          <i>done</i>
+          <span>Electrical</span>
+        </button>
+      </div>
+      <br>
+      <div id="articles">
+        <article class="programming">
+          <h5><a class="link" href="https://github.com/nathan-jw/pages" target="_blank">This Website</a></h5>
+          <p>
+            Made using stock HTML and <a class="link" href="https://www.beercss.com/" target="_blank">Beer CSS</a>.
+            Being so basic, I didn't see the need to use anything fancy for this project. Keep It Simple, Stupid!
+          </p>
+        </article>
+        <article class="electrical">
+          <h5><a class="link" href="https://github.com/RoboSub-UTD/GalaxSea-Power-Distribution-Board-2" target="_blank">Power Distribution Board</a></h5>
+          <p>
+            PCB board I'm making as a part of the RoboSub UTD GalaxSea electrical team. This board takes a 14.4V input
+            and feeds it out to a Jetson Orin NX and lidar sensor. It also uses an on-board 14.4V to 12V buck converter to
+            deliver power to ten seperate JST connectors where various motors and other components can be powered.
+          </p>
+        </article>
+        <article class="programming">
+          <h5><a class="link" href="https://github.com/Comet-Robotics/dohyo" target="_blank">Dohyo</a></h5>
+          <p>
+            Dohyo is a work-in-progress 2D sumo robot simulator written in C. Inspired by
+            <a class="link" href="https://github.com/artfulbytes/bots2d" target="_blank">Bot2D</a>, the goal is to create
+            a cross-platform simulator realistic and versatile enough for code written for the simulator to be able
+            to be used on a physical robot with minimal changes.
+          </p>
+        </article>
+        <article class="programming">
+          <h5><a class="link" href="https://github.com/RoboSub-UTD/attendance-tracker" target="_blank">Club Attendance Tracker</a></h5>
+          <p>
+            Website made using SvelteKit and Node.js to help track member attendance for RoboSub UTD. The website presents
+            a log-in screen to user where they swipe their university ID card through a reader, parsing the information and
+            validating their identity. In the case that the member has not signed in through the system before, a screen is presented
+            prompting them to insert their full name, public university ID, and any projects within the club that they
+            are involved in, which is inserted into a database. Upon future swipes, it automatically validates the
+            information on their university ID card against the information in the database, counting them present
+            with a simple card swipe.
+          </p>
+        </article>
+      </div>
+    </div>
+    <div class="page padding" id="clubs-tab">
+      <article>
+        <h5><a class="link" href="https://utdrobosub.com/" target="_blank">RoboSub UTD</a></h5>
+        <h6>Member</h6>
+        <p>
+          Primarily an electrical team member for GalaxSea, our
+          <a class="link" href="https://roboboat.org/" target="_blank">RoboBoat</a> team. In addition to this, I have helped
+          with club management by developing a
+          <a class="link" href="https://github.com/RoboSub-UTD/attendance-tracker" target="_blank">member attendance tracker</a>.
+        </p>
+      </article>
+      <article>
+        <h5><a class="link" href="https://cometrobotics.org/" target="_blank">Comet Robotics</a></h5>
+        <h6>Member</h6>
+        <p>
+          Mainly involved in the SumoBots project, where I do programming work for
+          <a class="link" href="https://github.com/Comet-Robotics/dohyo" target="_blank">Dohyo</a> and design sumo robot
+          control boards for use in internal competitions. I also occasionally help do photography at various club events.
+        </p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
